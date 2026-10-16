@@ -33,4 +33,15 @@ def test_malformed2_name():
     name = "airFoil2D_STT_43.597_5.932_0_0_12"
     with pytest.raises(ValueError):
         parse_name(name)
+
+def test_boolean_name():
+    name = "airFoil2D_SST_43.597_5.932_3.511_3.1_0.0_18.252"
+    dic = parse_name(name)
+
+    assert dic["inletVelocity"] == 43.597
+    assert dic["angleOfAttack"] == 5.932
+    assert dic["L"] == 3.511
+    assert dic["P"] == 3.1
+    assert dic["Q"] == False
+    assert dic["XX"] == 18.252
     

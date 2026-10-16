@@ -23,7 +23,7 @@ def parse_naca(naca: str) -> dict:
         return {
             "L": float(naca[0]), # design lift coefficient
             "P": float(naca[1]), # position of meximum camber
-            "Q": bool(naca[2]), # flag, "0" normal, "1" reflex camber
+            "Q": True if naca[2]=="1.0" else False, # flag, "0" normal, "1" reflex camber
             "XX" : float(naca[3]) # thickness
         }
 
