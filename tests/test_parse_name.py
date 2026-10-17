@@ -23,6 +23,16 @@ def test_4digit_name():
     assert dic["P"] == 0.0
     assert dic["XX"] == 12.0
 
+def test_negative_name():
+    name = "airFoil2D_SST_43.597_-5.932_0_0_12"
+    dic = parse_name(name)
+
+    assert dic["inletVelocity"] == 43.597
+    assert dic["angleOfAttack"] == -5.932
+    assert dic["M"] == 0.0
+    assert dic["P"] == 0.0
+    assert dic["XX"] == 12.0
+
 
 def test_malformed1_name():
     name = "Foil_SST_43.597_5.932_0_0_12"
