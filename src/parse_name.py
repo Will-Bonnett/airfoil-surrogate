@@ -1,4 +1,3 @@
-import pytest
 
 def parse_name(name: str) -> dict:
     arr = name.split("_")
