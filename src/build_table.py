@@ -1,5 +1,4 @@
 import json
-import numpy as np
 import pandas as pd
 import airfrans as af
 from tqdm import tqdm
@@ -29,19 +28,19 @@ def process_data():
     CSV_PATH = Path(__file__).resolve().parent.parent/"data"/"processed"/"airfrans_coefficients.csv"
 
     COLUMNS = [
-    # identity
-    "name",
-    # inputs
-    "inletVelocity", "Re", "angleOfAttack",
-    "M", "L", "P", "Q", "XX",
-    # targets (library totals)
-    "cl", "cd",
-    # library parts
-    "cl_p_lib", "cl_v_lib", "cd_p_lib", "cd_v_lib",
-    # own cross-check
-    "cl_p_cal", "cd_p_cal",
-    # splits
-    "split_full", "split_scarce", "split_reynolds", "split_aoa",
+        # identity
+        "name",
+        # inputs
+        "inletVelocity", "Re", "angleOfAttack",
+        "M", "L", "P", "Q", "XX",
+        # targets (library totals)
+        "cl", "cd",
+        # library parts
+        "cl_p_lib", "cl_v_lib", "cd_p_lib", "cd_v_lib",
+        # own cross-check
+        "cl_p_cal", "cd_p_cal",
+        # splits
+        "split_full", "split_scarce", "split_reynolds", "split_aoa",
     ]
 
     # Load JSON
@@ -54,8 +53,6 @@ def process_data():
     scarce_train = set(manifest["scarce_train"])
     reynolds_train = set(manifest["reynolds_train"])
     reynolds_test = set(manifest["reynolds_test"])
-
-    data_set = set(full_train).union(full_test)
 
     data = []
     # Iterate through each of those simulations and append the dictionary
