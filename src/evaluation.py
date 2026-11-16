@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-def add_results(results, model, cl_true=None, cl_pred=None, cd_true=None, cd_pred=None):
+def add_results(results, model, cl_true=None, cl_pred=None, cd_true=None, cd_pred=None, output=True):
     """
     Scores and Saves a models evaluation results to the given dict
 
@@ -28,11 +28,12 @@ def add_results(results, model, cl_true=None, cl_pred=None, cd_true=None, cd_pre
         row["cl_mae"] = cl_mae
         row["cl_rmse"] = cl_rmse
         row["cl_r2"] = cl_r2
-
-        print("\n--- Cl (coefficient of Lift) ---")
-        print(f"MAE: {cl_mae}")
-        print(f"RMSE: {cl_rmse}")
-        print(f"R^2: {cl_r2}")
+        
+        if output:
+            print("\n--- Cl (coefficient of Lift) ---")
+            print(f"MAE: {cl_mae}")
+            print(f"RMSE: {cl_rmse}")
+            print(f"R^2: {cl_r2}")
 
     if cd_pred is not None:
         cd_mae, cd_rmse, cd_r2 = evaluate(cd_true,cd_pred)
@@ -40,10 +41,11 @@ def add_results(results, model, cl_true=None, cl_pred=None, cd_true=None, cd_pre
         row["cd_rmse"] = cd_rmse
         row["cd_r2"] = cd_r2
 
-        print("--- Cd (coefficient of Drag) ---")
-        print(f"MAE: {cd_mae}")
-        print(f"RMSE: {cd_rmse}")
-        print(f"R^2: {cd_r2}")
+        if output:
+            print("--- Cd (coefficient of Drag) ---")
+            print(f"MAE: {cd_mae}")
+            print(f"RMSE: {cd_rmse}")
+            print(f"R^2: {cd_r2}")
 
     results[model] = row
     return results
