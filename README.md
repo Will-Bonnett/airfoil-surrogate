@@ -38,6 +38,7 @@ R^2 and MAE scores per model (full set):
 | linear_aoa2       |  0.96762 |  0.07477 |   0.9041  |   0.00106 |
 | gradient_boosting |  0.99018 |  0.04137 |   0.96523 |   0.00055 |
 | mlp               |  0.99843 |  0.01667 |   0.98047 |   0.00037 |
+
 (MLP: average of 10 networks)
 
 CL MAE scores per split:
